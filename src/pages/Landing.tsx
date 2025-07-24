@@ -1,7 +1,7 @@
 // src/pages/Landing.tsx
 
 import React, { useState, useEffect } from 'react';
-import { Database, Zap, Code, Globe, Users, Star, User } from 'lucide-react';
+import { Heart, Users, BookOpen, Palette, Music, Star, User, Calendar, Award, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Container, Button, Card, CardContent, Badge, Header, Nav, Section, Span, H1, H2, P, Div, Footer } from '../lib/dev-container';
 import { useAuth } from '../components/auth/AuthProvider';
@@ -13,18 +13,18 @@ const getStatCardId = (index: number): ComponentRegistryId => {
   return ids[index] || 'noID';
 };
 
-const getFeatureCardId = (index: number): ComponentRegistryId => {
-  const ids: ComponentRegistryId[] = ['feature-card-0', 'feature-card-1', 'feature-card-2', 'feature-card-3'];
+const getProgramCardId = (index: number): ComponentRegistryId => {
+  const ids: ComponentRegistryId[] = ['program-card-0', 'program-card-1', 'program-card-2', 'program-card-3'];
   return ids[index] || 'noID';
 };
 
-const getTechLetterId = (index: number): ComponentRegistryId => {
-  const ids: ComponentRegistryId[] = ['tech-letter-0', 'tech-letter-1', 'tech-letter-2', 'tech-letter-3', 'tech-letter-4', 'tech-letter-5'];
+const getActivityIconId = (index: number): ComponentRegistryId => {
+  const ids: ComponentRegistryId[] = ['activity-icon-0', 'activity-icon-1', 'activity-icon-2', 'activity-icon-3', 'activity-icon-4', 'activity-icon-5'];
   return ids[index] || 'noID';
 };
 
-const getTechBadgeId = (index: number): ComponentRegistryId => {
-  const ids: ComponentRegistryId[] = ['tech-badge-0', 'tech-badge-1', 'tech-badge-2', 'tech-badge-3', 'tech-badge-4', 'tech-badge-5'];
+const getActivityBadgeId = (index: number): ComponentRegistryId => {
+  const ids: ComponentRegistryId[] = ['activity-badge-0', 'activity-badge-1', 'activity-badge-2', 'activity-badge-3', 'activity-badge-4', 'activity-badge-5'];
   return ids[index] || 'noID';
 };
 
@@ -36,43 +36,47 @@ export const Landing: React.FC = () => {
     setMounted(true);
   }, []);
 
-  const features = [
+  const programs = [
     {
-      icon: <Zap className="w-8 h-8 text-yellow-500" />,
-      title: "Lightning Fast",
-      description: "Built with Vite for instant hot module replacement and blazing fast builds"
+      icon: <Heart className="w-8 h-8 text-pink-500" />,
+      title: "Toddler Care",
+      age: "18 months - 3 years",
+      description: "Nurturing environment focused on early development, social skills, and basic learning through play"
     },
     {
-      icon: <Database className="w-8 h-8 text-green-500" />,
-      title: "MongoDB + Prisma",
-      description: "Type-safe database access with MongoDB flexibility and Prisma's developer experience"
+      icon: <BookOpen className="w-8 h-8 text-blue-500" />,
+      title: "Pre-K Program",
+      age: "3 - 4 years",
+      description: "School readiness program with structured learning, literacy development, and social preparation"
     },
     {
-      icon: <Code className="w-8 h-8 text-blue-500" />,
-      title: "TypeScript Ready",
-      description: "Full TypeScript support with strict type checking and IntelliSense"
+      icon: <Award className="w-8 h-8 text-green-500" />,
+      title: "Kindergarten Prep",
+      age: "4 - 5 years",
+      description: "Advanced preparation for elementary school with academic foundations and independence skills"
     },
     {
-      icon: <Globe className="w-8 h-8 text-purple-500" />,
-      title: "Deploy Anywhere",
-      description: "Ready for Netlify, Vercel, or any modern hosting platform"
+      icon: <Users className="w-8 h-8 text-purple-500" />,
+      title: "After School Care",
+      age: "5 - 8 years",
+      description: "Safe, supervised environment with homework help, activities, and nutritious snacks"
     }
   ];
 
   const stats = [
-    { label: "Build Time", value: "< 2s" },
-    { label: "Bundle Size", value: "< 50KB" },
-    { label: "TypeScript", value: "100%" },
-    { label: "Performance", value: "A+" }
+    { label: "Happy Children", value: "250+" },
+    { label: "Qualified Teachers", value: "18" },
+    { label: "Years Experience", value: "15+" },
+    { label: "Parent Satisfaction", value: "98%" }
   ];
 
   return (
-    <Container componentId="landing-page-root"> {/* Changed to direct ID */}
+    <Container componentId="landing-page-root">
       <Div 
         devId="main-wrapper" 
         devName="Main Wrapper" 
-        devDescription="Main page wrapper with gradient background"
-        className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+        devDescription="Main page wrapper with cheerful gradient background"
+        className="min-h-screen bg-gradient-to-br from-blue-50 via-pink-50 to-yellow-50"
       >
       {/* Header */}
       <Header 
@@ -90,19 +94,19 @@ export const Landing: React.FC = () => {
           <Div 
             devId="logo-section" 
             devName="Logo Section" 
-            devDescription="Company logo and brand name"
+            devDescription="Kindergarten logo and brand name"
             className="flex items-center space-x-2"
           >
-            <Div devId="noID" className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-              <Code className="w-5 h-5 text-white" />
+            <Div devId="noID" className="w-10 h-10 bg-gradient-to-r from-pink-400 to-yellow-400 rounded-full flex items-center justify-center">
+              <Heart className="w-6 h-6 text-white" />
             </Div>
             <Span 
               devId="brand-name" 
               devName="Brand Name" 
-              devDescription="Geenius Template brand name"
-              className="text-xl font-bold text-white"
+              devDescription="Little Stars Kindergarten brand name"
+              className="text-2xl font-bold text-gray-800"
             >
-              Geenius Template
+              Little Stars Kindergarten
             </Span>
           </Div>
           <Div 
@@ -112,13 +116,22 @@ export const Landing: React.FC = () => {
             className="flex items-center space-x-4"
           >
             <Button 
-              devId="docs-button" 
-              devName="Docs Button" 
-              devDescription="Link to documentation"
+              devId="programs-button" 
+              devName="Programs Button" 
+              devDescription="Link to programs information"
               variant="ghost" 
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-600 hover:text-gray-800 transition-colors"
             >
-              Docs
+              Programs
+            </Button>
+            <Button 
+              devId="about-button" 
+              devName="About Button" 
+              devDescription="Link to about us page"
+              variant="ghost" 
+              className="text-gray-600 hover:text-gray-800 transition-colors"
+            >
+              About
             </Button>
             {isAuthenticated ? (
               <Div 
@@ -131,7 +144,7 @@ export const Landing: React.FC = () => {
                   devId="welcome-message" 
                   devName="Welcome Message" 
                   devDescription="Welcome message for authenticated user"
-                  className="text-gray-300"
+                  className="text-gray-600"
                 >
                   Welcome, {user?.name?.split(' ')[0]}!
                 </Span>
@@ -140,7 +153,7 @@ export const Landing: React.FC = () => {
                     devId="nav-dashboard-button"
                     devName="Navigation Dashboard Button"
                     devDescription="Dashboard button in navigation header for authenticated users"
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg transition-colors"
                   >
                     <User className="w-4 h-4 mr-2" />
                     Dashboard
@@ -160,19 +173,19 @@ export const Landing: React.FC = () => {
                     devName="Navigation Login Button"
                     devDescription="Login button in navigation header"
                     variant="ghost" 
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-gray-800 transition-colors"
                   >
-                    Login
+                    Staff Login
                   </Button>
                 </Link>
                 <Link to="/register">
                   <Button 
                     devId="nav-register-button"
                     devName="Navigation Register Button"
-                    devDescription="Get started button in navigation header"
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    devDescription="Enroll now button in navigation header"
+                    className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg transition-colors"
                   >
-                    Get Started
+                    Enroll Now
                   </Button>
                 </Link>
               </Div>
@@ -182,11 +195,11 @@ export const Landing: React.FC = () => {
       </Header>
 
       {/* Hero Section */}
-      <Container componentId="hero-section"> {/* Changed to direct ID */}
+      <Container componentId="hero-section">
         <Section 
           devId="hero-content" 
           devName="Hero Content" 
-          devDescription="Main hero Section with title and call-to-action"
+          devDescription="Main hero section with title and call-to-action"
           className="container mx-auto px-4 py-20 text-center"
         >
           <Div 
@@ -198,41 +211,42 @@ export const Landing: React.FC = () => {
             <H1 
               devId="hero-title" 
               devName="Hero Title" 
-              devDescription="Main hero title showcasing the tech stack"
-              className="text-5xl md:text-7xl font-bold text-white mb-6"
+              devDescription="Main hero title showcasing kindergarten mission"
+              className="text-5xl md:text-7xl font-bold text-gray-800 mb-6"
             >
-              Vite + React + 
+              Where Little 
               <Span 
-                devId="mongodb-highlight" 
-                devName="MongoDB Highlight" 
-                devDescription="Highlighted MongoDB text in gradient"
-                className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                devId="stars-highlight" 
+                devName="Stars Highlight" 
+                devDescription="Highlighted Stars text in gradient"
+                className="bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent"
               >
-                {' '}MongoDB
+                {' '}Stars
               </Span>
+              {' '}Shine Bright
             </H1>
             <P 
               devId="hero-description" 
               devName="Hero Description" 
-              devDescription="Hero Section description explaining the template benefits"
-              className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+              devDescription="Hero section description explaining kindergarten mission"
+              className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
             >
-              Modern full-stack template with lightning-fast development, type-safe database access, 
-              and production-ready deployment configuration.
+              Nurturing young minds through play-based learning, creative exploration, 
+              and loving care in a safe, stimulating environment.
             </P>
             <Div 
               devId="hero-cta-buttons" 
               devName="Hero CTA Buttons" 
-              devDescription="Call-to-action buttons in hero Section"
+              devDescription="Call-to-action buttons in hero section"
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               {isAuthenticated ? (
                 <Link to="/dashboard">
                   <Button 
-                    devId="hero-start-building"
-                    devName="Start Building Button"
-                    devDescription="Primary call-to-action button for starting to build with the template"
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
+                    devId="hero-dashboard-button"
+                    devName="Go to Dashboard Button"
+                    devDescription="Primary call-to-action button for accessing dashboard"
+                    className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
                   >
                     Go to Dashboard
                   </Button>
@@ -240,23 +254,23 @@ export const Landing: React.FC = () => {
               ) : (
                 <Link to="/register">
                   <Button 
-                    devId="hero-start-building"
-                    devName="Start Building Button"
-                    devDescription="Primary call-to-action button for starting to build with the template"
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
+                    devId="hero-enroll-button"
+                    devName="Enroll Your Child Button"
+                    devDescription="Primary call-to-action button for enrollment"
+                    className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
                   >
-                    Start Building
+                    Enroll Your Child
                   </Button>
                 </Link>
               )}
               <Button 
-                devId="hero-github-button"
-                devName="View on GitHub Button"
-                devDescription="Secondary button to view the project on GitHub"
+                devId="hero-tour-button"
+                devName="Schedule Tour Button"
+                devDescription="Secondary button to schedule a tour"
                 variant="outline"
-                className="border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all"
+                className="border-2 border-pink-400 text-pink-600 hover:bg-pink-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all"
               >
-                View on GitHub
+                Schedule a Tour
               </Button>
             </Div>
           </Div>
@@ -264,11 +278,11 @@ export const Landing: React.FC = () => {
       </Container>
 
       {/* Stats Section */}
-      <Container componentId="stats-section"> {/* Changed to direct ID */}
+      <Container componentId="stats-section">
         <Section 
           devId="stats-content" 
           devName="Stats Content" 
-          devDescription="Statistics Section showing performance metrics"
+          devDescription="Statistics section showing kindergarten achievements"
           className="container mx-auto px-4 py-12"
         >
           <Div 
@@ -283,11 +297,11 @@ export const Landing: React.FC = () => {
                 devId={getStatCardId(index)}
                 devName={`${stat.label} Stat Card`}
                 devDescription={`Statistical card showing ${stat.label}: ${stat.value}`}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center border border-white/10"
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center border border-pink-100 shadow-lg"
               >
-                <CardContent devId="noID"  className="p-0">
-                  <Div devId="noID" className="text-2xl font-bold text-white mb-2">{stat.value}</Div>
-                  <Div devId="noID" className="text-gray-400">{stat.label}</Div>
+                <CardContent devId="noID" className="p-0">
+                  <Div devId="noID" className="text-3xl font-bold text-pink-600 mb-2">{stat.value}</Div>
+                  <Div devId="noID" className="text-gray-600">{stat.label}</Div>
                 </CardContent>
               </Card>
             ))}
@@ -295,28 +309,29 @@ export const Landing: React.FC = () => {
         </Section>
       </Container>
 
-      {/* Features Section */}
-      <Container componentId="features-section"> {/* Changed to direct ID */}
+      {/* Programs Section */}
+      <Container componentId="programs-section">
         <Section devId="noID" className="container mx-auto px-4 py-20">
           <Div devId="noID" className="text-center mb-16">
-            <H2 devId="noID" className="text-4xl font-bold text-white mb-4">Why Choose This Template?</H2>
-            <P devId="noID" className="text-gray-300 max-w-2xl mx-auto">
-              Everything you need to build modern web applications with the latest technologies
+            <H2 devId="noID" className="text-4xl font-bold text-gray-800 mb-4">Our Programs</H2>
+            <P devId="noID" className="text-gray-600 max-w-2xl mx-auto">
+              Age-appropriate programs designed to foster growth, learning, and development at every stage
             </P>
           </Div>
           <Div devId="noID" className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
+            {programs.map((program, index) => (
               <Card 
                 key={index} 
-                devId={getFeatureCardId(index)}
-                devName={`${feature.title} Feature Card`}
-                devDescription={`Feature card highlighting ${feature.title}: ${feature.description}`}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-purple-500/50 transition-all"
+                devId={getProgramCardId(index)}
+                devName={`${program.title} Program Card`}
+                devDescription={`Program card for ${program.title}: ${program.description}`}
+                className="bg-white rounded-xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
                 <CardContent devId="noID" className="p-0">
-                  <Div devId="noID" className="mb-4">{feature.icon}</Div>
-                  <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                  <P devId="noID" className="text-gray-400">{feature.description}</P>
+                  <Div devId="noID" className="mb-4">{program.icon}</Div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{program.title}</h3>
+                  <Badge devId="noID" className="mb-3 bg-pink-100 text-pink-700">{program.age}</Badge>
+                  <P devId="noID" className="text-gray-600">{program.description}</P>
                 </CardContent>
               </Card>
             ))}
@@ -324,35 +339,35 @@ export const Landing: React.FC = () => {
         </Section>
       </Container>
 
-      {/* Tech Stack Section */}
-      <Container componentId="tech-stack-section"> {/* Changed to direct ID */}
-        <Section devId="noID" className="container mx-auto px-4 py-20">
+      {/* Activities Section */}
+      <Container componentId="activities-section">
+        <Section devId="noID" className="container mx-auto px-4 py-20 bg-white/50 rounded-3xl mx-4">
           <Div devId="noID" className="text-center mb-16">
-            <H2 devId="noID" className="text-4xl font-bold text-white mb-4">Modern Tech Stack</H2>
-            <P devId="noID" className="text-gray-300 max-w-2xl mx-auto">
-              Built with the most popular and reliable technologies
+            <H2 devId="noID" className="text-4xl font-bold text-gray-800 mb-4">Daily Activities</H2>
+            <P devId="noID" className="text-gray-600 max-w-2xl mx-auto">
+              Engaging activities that promote learning, creativity, and social development
             </P>
           </Div>
           <Div devId="noID" className="grid grid-cols-2 md:grid-cols-6 gap-8">
             {[
-              { name: "Vite", color: "from-yellow-400 to-orange-500" },
-              { name: "React", color: "from-blue-400 to-cyan-400" },
-              { name: "TypeScript", color: "from-blue-500 to-blue-600" },
-              { name: "MongoDB", color: "from-green-400 to-green-500" },
-              { name: "Prisma", color: "from-purple-400 to-purple-500" },
-              { name: "Tailwind", color: "from-teal-400 to-teal-500" }
-            ].map((tech, index) => (
+              { name: "Reading", icon: BookOpen, color: "from-blue-400 to-blue-500" },
+              { name: "Art & Crafts", icon: Palette, color: "from-purple-400 to-purple-500" },
+              { name: "Music", icon: Music, color: "from-green-400 to-green-500" },
+              { name: "Outdoor Play", icon: Users, color: "from-yellow-400 to-yellow-500" },
+              { name: "Science", icon: Star, color: "from-pink-400 to-pink-500" },
+              { name: "Math Games", icon: Award, color: "from-indigo-400 to-indigo-500" }
+            ].map((activity, index) => (
               <Div key={index} devId="noID" className="text-center">
-                <Div devId={getTechLetterId(index)} className={`w-16 h-16 mx-auto mb-3 rounded-xl bg-gradient-to-br ${tech.color} flex items-center justify-center`}>
-                  <span className="text-white font-bold text-lg">{tech.name[0]}</span>
+                <Div devId={getActivityIconId(index)} className={`w-16 h-16 mx-auto mb-3 rounded-xl bg-gradient-to-br ${activity.color} flex items-center justify-center`}>
+                  <activity.icon className="text-white w-8 h-8" />
                 </Div>
                 <Badge 
-                  devId={getTechBadgeId(index)}
-                  devName={`${tech.name} Technology Badge`}
-                  devDescription={`Technology badge for ${tech.name}`}
-                  className="text-gray-300 font-medium bg-transparent border-none"
+                  devId={getActivityBadgeId(index)}
+                  devName={`${activity.name} Activity Badge`}
+                  devDescription={`Activity badge for ${activity.name}`}
+                  className="text-gray-700 font-medium bg-transparent border-none"
                 >
-                  {tech.name}
+                  {activity.name}
                 </Badge>
               </Div>
             ))}
@@ -360,36 +375,82 @@ export const Landing: React.FC = () => {
         </Section>
       </Container>
 
-      {/* CTA Section */}
-      <Container componentId="cta-section"> {/* Changed to direct ID */}
+      {/* Testimonials Section */}
+      <Container componentId="testimonials-section">
         <Section devId="noID" className="container mx-auto px-4 py-20">
-          <Div devId="noID" className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl p-12 text-center border border-purple-500/30">
-            <H2 devId="noID" className="text-4xl font-bold text-white mb-4">Ready to Build Something Amazing?</H2>
-            <P devId="noID" className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Get started with this template and build your next project with confidence
+          <Div devId="noID" className="text-center mb-16">
+            <H2 devId="noID" className="text-4xl font-bold text-gray-800 mb-4">What Parents Say</H2>
+            <P devId="noID" className="text-gray-600 max-w-2xl mx-auto">
+              Hear from families who trust us with their most precious gifts
+            </P>
+          </Div>
+          <Div devId="noID" className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                quote: "My daughter loves going to Little Stars every day. The teachers are amazing and she's learned so much!",
+                parent: "Sarah Johnson",
+                child: "Emma, age 4"
+              },
+              {
+                quote: "The caring environment and structured learning have prepared my son wonderfully for kindergarten.",
+                parent: "Michael Chen",
+                child: "Lucas, age 5"
+              },
+              {
+                quote: "I feel completely confident leaving my children here. They're safe, happy, and thriving.",
+                parent: "Lisa Rodriguez",
+                child: "Sofia & Diego"
+              }
+            ].map((testimonial, index) => (
+              <Card key={index} devId="noID" className="bg-white rounded-xl p-6 shadow-lg">
+                <CardContent devId="noID" className="p-0">
+                  <Div devId="noID" className="flex mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </Div>
+                  <P devId="noID" className="text-gray-600 mb-4 italic">"{testimonial.quote}"</P>
+                  <Div devId="noID">
+                    <P devId="noID" className="font-semibold text-gray-800">{testimonial.parent}</P>
+                    <P devId="noID" className="text-sm text-gray-500">{testimonial.child}</P>
+                  </Div>
+                </CardContent>
+              </Card>
+            ))}
+          </Div>
+        </Section>
+      </Container>
+
+      {/* CTA Section */}
+      <Container componentId="cta-section">
+        <Section devId="noID" className="container mx-auto px-4 py-20">
+          <Div devId="noID" className="bg-gradient-to-r from-pink-100 to-yellow-100 rounded-2xl p-12 text-center border border-pink-200">
+            <H2 devId="noID" className="text-4xl font-bold text-gray-800 mb-4">Ready to Join Our Family?</H2>
+            <P devId="noID" className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Give your child the best start in life with our nurturing, educational environment
             </P>
             <Div devId="noID" className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                devId="cta-start-project"
-                devName="Start Project Button"
-                devDescription="Primary CTA button to start a new project"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
+                devId="cta-enroll-button"
+                devName="Enroll Today Button"
+                devDescription="Primary CTA button to start enrollment"
+                className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
               >
                 <span className="flex items-center gap-2">
-                  <Star className="w-5 h-5" />
-                  Start Project
+                  <Heart className="w-5 h-5" />
+                  Enroll Today
                 </span>
               </Button>
               <Button 
-                devId="cta-join-community"
-                devName="Join Community Button"
-                devDescription="Secondary CTA button to join the community"
+                devId="cta-contact-button"
+                devName="Contact Us Button"
+                devDescription="Secondary CTA button to contact the school"
                 variant="outline"
-                className="border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all"
+                className="border-2 border-pink-400 text-pink-600 hover:bg-pink-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all"
               >
                 <span className="flex items-center gap-2">
-                  <Users className="w-5 h-5" />
-                  Join Community
+                  <Calendar className="w-5 h-5" />
+                  Contact Us
                 </span>
               </Button>
             </Div>
@@ -401,17 +462,18 @@ export const Landing: React.FC = () => {
       <Footer 
         devId="main-footer" 
         devName="Main Footer" 
-        devDescription="Site footer with links and copyright"
-        className="container mx-auto px-4 py-8 border-t border-white/10"
+        devDescription="Site footer with contact information and links"
+        className="container mx-auto px-4 py-8 border-t border-gray-200"
       >
         <Div devId="noID" className="flex flex-col md:flex-row justify-between items-center">
-          <Div devId="noID" className="text-gray-400 mb-4 md:mb-0">
-            © 2024 Geenius Template. Built with ❤️ for developers.
+          <Div devId="noID" className="text-gray-600 mb-4 md:mb-0">
+            © 2024 Little Stars Kindergarten. Nurturing young minds with love and care.
           </Div>
           <Div devId="noID" className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Documentation</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Support</a>
+            <a href="#" className="text-gray-600 hover:text-pink-600 transition-colors">Programs</a>
+            <a href="#" className="text-gray-600 hover:text-pink-600 transition-colors">About Us</a>
+            <a href="#" className="text-gray-600 hover:text-pink-600 transition-colors">Contact</a>
+            <a href="#" className="text-gray-600 hover:text-pink-600 transition-colors">Enrollment</a>
           </Div>
         </Div>
       </Footer>
